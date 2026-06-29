@@ -26,7 +26,7 @@ Personal infrastructure for my IdeaPad P500 server. One old laptop, running Debi
 
 ## Architecture
 
-```
+```txt
 Internet → Tailscale → ideapad (Debian 13)
                           ├── NGINX (port 80)
                           │     ├── / → Odysseus (port 7000)
@@ -65,7 +65,7 @@ This installs all packages, configures Docker, sets up Tailscale, deploys NGINX,
 
 ## Directory Structure
 
-```
+```txt
 homelab/
 ├── README.md                   # This file
 ├── bootstrap.sh                # One-command server rebuild
