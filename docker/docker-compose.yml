@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    networks:
+      - internal
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    networks:
+      - internal
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  # Prometheus — tomorrow
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   ...
+
+  # Your web app — tomorrow
+  # webapp:
+  #   ...
+
+networks:
+  internal:
+    external: true
+
+volumes:
+  grafana_data:
